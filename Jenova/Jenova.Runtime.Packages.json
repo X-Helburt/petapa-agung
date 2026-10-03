@@ -1,0 +1,24 @@
+{
+  "packages": [
+    {
+      "pkgDestination": "res://Jenova/Packages/JenovaMSVCCompiler-Universal",
+      "pkgHash": "b1ab9829b05df8daee84ba64633c1116",
+      "pkgInstallScript": false,
+      "pkgName": "Microsoft Compiler Bridge (MSVC-Bridge)",
+      "pkgPlatform": 0,
+      "pkgType": 0,
+      "pkgUninstallScript": false,
+      "pkgVersion": "Universal (x64)"
+    },
+    {
+      "pkgDestination": "res://Jenova/Packages/GodotSDK-4.7.0",
+      "pkgHash": "c732dd58d8f83e59f03f1b5444279172",
+      "pkgInstallScript": false,
+      "pkgName": "Godot SDK 4.7.0 R2 (MSVC)",
+      "pkgPlatform": 0,
+      "pkgType": 1,
+      "pkgUninstallScript": false,
+      "pkgVersion": "4.7.0 (x64)"
+    }
+  ]
+}
