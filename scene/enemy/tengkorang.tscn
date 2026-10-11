@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://y3pwuuv7bfck"]
+
+[ext_resource type="Script" uid="uid://cehwlg28ai3vp" path="res://scripe/tengkorang.gd" id="1_36uc6"]
+[ext_resource type="Texture2D" uid="uid://cfyu5ru5rnpy0" path="res://sprites/characters/blpixelartist_Skeleton Army/Skeleton_King.png" id="1_er814"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36uc6"]
+atlas = ExtResource("1_er814")
+region = Rect2(0, 0, 37, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qxhxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36uc6")
+}],
+"loop": 1,
+"name": &"tengkorak idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxhxg"]
+size = Vector2(26, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_er814"]
+size = Vector2(27, 52)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=224605847]
+script = ExtResource("1_36uc6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1988696075]
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(1, 0.941)
+sprite_frames = SubResource("SpriteFrames_qxhxg")
+animation = &"tengkorak idle"
+autoplay = "tengkorak idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160194953]
+position = Vector2(1, 22)
+shape = SubResource("RectangleShape2D_qxhxg")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2118522570]
+position = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1836781348]
+position = Vector2(1.5, 27)
+shape = SubResource("RectangleShape2D_er814")
+debug_color = Color(0.57048595, 0.55652386, 0.10447057, 0.41960785)
+
+[node name="Darah" type="Label" parent="." unique_id=2004564884]
+offset_left = -13.0
+offset_top = -48.0
+offset_right = 27.0
+offset_bottom = -25.0
+
+[node name="regen" type="Timer" parent="." unique_id=2082422996]

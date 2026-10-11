@@ -1,3 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+*.tmp
+
+# Temporary build / editor files
+~*
+*.vcxproj.user
+*.lib
+*.exp
+*.obj
+*.pdb
+*.ilk

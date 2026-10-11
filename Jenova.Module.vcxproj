@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- J.E.N.O.V.A Vistual Studio Project v0.3.9.0 -->
+<!-- Developed By Hamid.Memar (MemarDesign™ LLC.) -->
+
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Build|x64">
+			<Configuration>Build</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals">
+		<VCProjectVersion>17.0</VCProjectVersion>
+		<ProjectGuid>{5F4A4E56-DEAD-666C-3313-484D454D4152}</ProjectGuid>
+		<RootNamespace>Jenova.Framework</RootNamespace>
+		<WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+	<PropertyGroup Label="Configuration">
+		<ConfigurationType>DynamicLibrary</ConfigurationType>
+		<UseDebugLibraries>false</UseDebugLibraries>
+		<WholeProgramOptimization>true</WholeProgramOptimization>
+		<CharacterSet>Unicode</CharacterSet>
+		<PlatformToolset>v143</PlatformToolset>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+	<ImportGroup Label="ExtensionSettings">
+	</ImportGroup>
+	<PropertyGroup>
+		<LinkIncremental>false</LinkIncremental>
+		<OutDir>.jenova\</OutDir>
+		<IntDir>.jenova\VisualStudio\</IntDir>
+		<BuiltInDir>.jenova\BuiltInScripts\</BuiltInDir>
+		<TargetExt>.dll</TargetExt>
+		<JenovaConfiguration>eNqNkV9PwjAUxd/5FMteIePfgM033NDMoBBBXpwhXXeB6tYut60JIXx3u00NBoy+dOk9v3vv2emhYVn2OE2ZYoKTLIQCeAqcMpD2lWXbrZ96xGmmUwgZAlUCf6GmLEGC+4vUtWaZYnxO1K4sOq/AxTuJ46oe8QVFVigZxzUdaKlEHoi8YBmg+eaEpyfTan3K+Nsl9RY4IFEQQqK3Ed8IzEnp0BAKNVRMxBVgDikz3JmpFZOaZAulUya+LM20KrQ6Q2txjlCgoCClwBA2jFeJVJbuJg+z1XgdPC2Ws/uaftRcsRxWgLJ2ZXecvuM7nVqus5gYRtURPpuqZR2q81u/McmUrbK8QTtoNq0lAkhryvJEtBUaM+sdkEw5tCiqySfdkXlsM39fToCu3/ModAfeaOi6Iy/1AewKP7b+sVng9q8NfeJ7G88Hd+QOun4ypMNO8rnBnC8nfy0DYcIxPb3G8QO7988p</JenovaConfiguration>
+	</PropertyGroup>
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<WarningLevel>TurnOffAllWarnings</WarningLevel>
+			<FunctionLevelLinking>true</FunctionLevelLinking>
+			<SDLCheck>true</SDLCheck>
+			<PreprocessorDefinitions>TYPED_METHOD_BIND;HOT_RELOAD_ENABLED;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<ConformanceMode>false</ConformanceMode>
+			<RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<LanguageStandard>stdcpp20</LanguageStandard>
+			<OpenMPSupport>true</OpenMPSupport>
+			<MultiProcessorCompilation>true</MultiProcessorCompilation>
+			<IntrinsicFunctions>true</IntrinsicFunctions>
+			<ExceptionHandling>Async</ExceptionHandling>
+			<RuntimeTypeInfo>true</RuntimeTypeInfo>
+			<AdditionalIncludeDirectories>./;./Jenova/JenovaSDK;./Jenova/Packages//GodotSDK-4.7.0;</AdditionalIncludeDirectories>
+			<ForcedIncludeFiles>JenovaSDK.h;</ForcedIncludeFiles>
+		</ClCompile>
+		<Link>
+			<SubSystem>Console</SubSystem>
+			<EnableCOMDATFolding>true</EnableCOMDATFolding>
+			<OptimizeReferences>false</OptimizeReferences>
+			<GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+			<GenerateMapFile>true</GenerateMapFile>
+			<MapFileName>$(OutDir)Jenova.Module.map</MapFileName>
+			<AdditionalLibraryDirectories>./;./Jenova/JenovaSDK;./Jenova/Packages//GodotSDK-4.7.0;</AdditionalLibraryDirectories>
+			<AdditionalDependencies>libGodot.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+			<DelayLoadDLLs>Jenova.Runtime.Win64.dll;</DelayLoadDLLs>
+			<LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+		</Link>
+	</ItemDefinitionGroup>
+	<ItemGroup>
+		<ClCompile Include="scripe\C++ Trees Limbo\tress_healt.cpp">
+			<UniqueIdentity>e1928ce158764478d9ee</UniqueIdentity>
+		</ClCompile>
+		<ClCompile Include="scripe\org.cpp">
+			<UniqueIdentity>3a98f89e474519b6c60b</UniqueIdentity>
+		</ClCompile>
+	</ItemGroup>
+	<Target Name="JenovaPreBuild" BeforeTargets="JenovaBuild">
+		<Message Text="Preparing Jenova Project..." />
+		<Exec Command="rundll32.exe &quot;$(SolutionDir)Jenova\Jenova.Runtime.Win64.dll&quot;,Deploy --command prepare --compiler msvc" />
+		<Exec Command="rundll32.exe &quot;$(SolutionDir)Jenova\Jenova.Runtime.Win64.dll&quot;,Deploy --command create-internal-scripts /cache:&quot;$(IntDir)&quot;" />
+	</Target>
+	<Target Name="JenovaBuild" BeforeTargets="ClCompile">
+		<ItemGroup>
+			<CppFiles Include="@(ClCompile)">
+				<UniqueIdentity>%(ClCompile.UniqueIdentity)</UniqueIdentity>
+				<OriginalFile>%(ClCompile.Identity)</OriginalFile>
+				<JenovaConfiguration>$(JenovaConfiguration)</JenovaConfiguration>
+			</CppFiles>
+		</ItemGroup>
+		<Exec Command="rundll32.exe &quot;$(SolutionDir)Jenova\Jenova.Runtime.Win64.dll&quot;,Deploy --command preprocess --compiler msvc --identity %(UniqueIdentity) --configuration %(JenovaConfiguration) /in:&quot;%(CppFiles.FullPath)&quot; /cache:&quot;$(IntDir)&quot;" />
+		<ItemGroup>
+			<PreprocessedFiles Include="$(IntDir)%(Filename)_%(UniqueIdentity).cpp">
+				<OriginalFile>%(CppFiles.OriginalFile)</OriginalFile>
+			</PreprocessedFiles>
+		</ItemGroup>
+		<ItemGroup>
+			<ClCompile Include="@(PreprocessedFiles)">
+				<AssemblerOutput>NoListing</AssemblerOutput>
+				<AssemblerListingLocation>
+				</AssemblerListingLocation>
+			</ClCompile>
+			<ClCompile Remove="@(CppFiles)" />
+			<ClCompile Include="$(IntDir)JenovaModuleLoader.cpp" />
+		</ItemGroup>
+	</Target>
+	<Target Name="JenovaPostBuild" AfterTargets="Build">
+		<Delete Files="@(PreprocessedFiles)" />
+		<Exec Command="rundll32.exe &quot;$(SolutionDir)Jenova\Jenova.Runtime.Win64.dll&quot;,Deploy --command generate-watchdog --watchdog-invoker vs --configuration %(CppFiles.JenovaConfiguration) /cache:&quot;$(OutDir)&quot;" />
+		<Exec Command="rundll32.exe &quot;$(SolutionDir)Jenova\Jenova.Runtime.Win64.dll&quot;,Deploy --command finalize --compiler msvc" />
+	</Target>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+	<ImportGroup Label="ExtensionTargets" />
+</Project>
