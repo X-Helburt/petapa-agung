@@ -8,4 +8,4 @@ func enter() -> void:
 
 func physics_update(_delta: float) -> void:
 	if slime and slime.target_player:
-		slime.change_state_slime("slime jalan")
+		slime.ubah_state_slime("slime jalan")

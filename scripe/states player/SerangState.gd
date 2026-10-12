@@ -92,6 +92,6 @@ func _on_animation_finished():
 	# Ketika animasi serangan selesai, otomatis kembali ke idle atau jalan
 	var arah_saat_ini = get_arah_sekarang()
 	if arah_saat_ini != Vector2.ZERO:
-		player.change_state("jalan")
+		player.ubah_state("jalan")
 	else:
-		player.change_state("idle")
+		player.ubah_state("idle")

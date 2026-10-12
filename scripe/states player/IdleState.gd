@@ -47,7 +47,7 @@ func enter():
 func physics_update(_delta):
 	# Utamakan serangan jika tombol_serang ditekan
 	if Input.is_action_pressed("tombol_serang"):
-		player.change_state("serang")
+		player.ubah_state("serang")
 		return
 
 	# kalau ada input arah, pindah ke JalanState
@@ -59,4 +59,4 @@ func physics_update(_delta):
 	or Input.is_action_pressed("kiri") \
 	or Input.is_action_pressed("atas") \
 	or Input.is_action_pressed("bawah"):
-		player.change_state("jalan")
+		player.ubah_state("jalan")

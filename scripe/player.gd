@@ -63,12 +63,12 @@ func _ready():
 	if regen_player and not regen_player.timeout.is_connected(_on_regen_timeout):
 		regen_player.timeout.connect(_on_regen_timeout)
 
-	change_state("idle")
+	ubah_state("idle")
 
 func get_animasi() -> AnimatedSprite2D:
 	return animated_sprite
 
-func change_state(new_state: String):
+func ubah_state(new_state: String):
 	if state:
 		state.exit()
 	if states.has(new_state):
@@ -124,7 +124,7 @@ func kena_serang(area: Area2D) -> void:
 			darah_player.text = str(max(darah, 0))
 		
 		if darah <= 0:
-			change_state("mati")
+			ubah_state("mati")
 		else:
 			# Efek visual kedip merah saat terkena serangan
 			kebal_player = true
@@ -177,4 +177,4 @@ func respawn() -> void:
 	
 	animated_sprite.modulate = Color.WHITE
 	show()
-	change_state("idle")
+	ubah_state("idle")

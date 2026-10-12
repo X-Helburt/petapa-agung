@@ -44,9 +44,9 @@ func _ready():
 	if hitbox.area_entered and not hitbox.area_entered.is_connected(kena_serang):
 		hitbox.area_entered.connect(kena_serang)
 
-	change_state_slime("slime idle")
+	ubah_state_slime("slime idle")
 
-func change_state_slime(new_state: String):
+func ubah_state_slime(new_state: String):
 	if state:
 		state.exit()
 	if states.has(new_state):
@@ -69,17 +69,17 @@ func _on_animated_sprite_2d_frame_changed():
 func on_player_terdeteksi(player_node: CharacterBody2D) -> void:
 	target_player = player_node
 	if not sudah_mati and state != states.get("slime serang") and state != states.get("slime mati"):
-		change_state_slime("slime jalan")
+		ubah_state_slime("slime jalan")
 
 func on_player_hilang(player_node: CharacterBody2D) -> void:
 	var slime_kerjaan = randf()
 	if target_player == player_node:
 		target_player = null
 		if not sudah_mati and state != states.get("slime serang") and state != states.get("slime mati"):
-			change_state_slime("slime idle")
+			ubah_state_slime("slime idle")
 			if slime_kerjaan > 0.5:
 				print("jalan")
-			else:
+			elif slime_kerjaan < 0.5:
 				print("di")
 
 func _process(delta):
@@ -109,7 +109,7 @@ func kena_serang(area):
 		darah -= damage_diterima
 		if darah <= 0:
 			label_slime.hide()
-			change_state_slime("slime mati")
+			ubah_state_slime("slime mati")
 		else:
 			# Efek visual kedip merah saat terkena serangan
 			kebal = true
@@ -171,7 +171,7 @@ func respawn():
 	collision.set_deferred("disabled", false)
 	set_physics_process(true)
 	set_process(true)
-	change_state_slime("slime idle")
+	ubah_state_slime("slime idle")
 
 
 func _on_regen_timeout() -> void:

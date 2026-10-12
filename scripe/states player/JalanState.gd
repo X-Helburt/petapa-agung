@@ -15,7 +15,7 @@ func enter() -> void:
 func physics_update(_delta):
 	# Jika tombol serang ditekan saat sedang jalan, langsung serang
 	if Input.is_action_pressed("tombol_serang"):
-		player.change_state("serang")
+		player.ubah_state("serang")
 		return
 	
 	var input_dir = Vector2.ZERO
@@ -34,7 +34,7 @@ func physics_update(_delta):
 		if timer_jeda_diagonal > 0:
 			player.arah_terakhir = arah_diagonal
 
-		player.change_state("idle")
+		player.ubah_state("idle")
 		return
 	
 

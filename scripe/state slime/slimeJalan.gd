@@ -9,7 +9,7 @@ func enter() -> void:
 
 func physics_update(_delta: float) -> void:
 	if not slime or not slime.target_player:
-		slime.change_state_slime("slime idle")
+		slime.ubah_state_slime("slime idle")
 		return
 
 	var arah = slime.target_player.global_position - slime.global_position
@@ -17,7 +17,7 @@ func physics_update(_delta: float) -> void:
 
 	# Jika sudah dekat dengan player, beralih ke state serang
 	if jarak <= JARAK_SERANG:
-		slime.change_state_slime("slime serang")
+		slime.ubah_state_slime("slime serang")
 		return
 
 	# Bergerak mendekati player

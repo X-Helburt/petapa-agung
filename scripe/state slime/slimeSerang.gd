@@ -17,8 +17,11 @@ func exit() -> void:
 		slime.set_attack_box_active(false)
 
 func _on_animation_finished() -> void:
+	var _slime_setelahnya = randf()
 	if slime and slime.state == self:
 		if slime.target_player:
-			slime.change_state_slime("slime jalan")
+			slime.ubah_state_slime("slime jalan")
+		# elif slime_setelahnya > 0.5:
+		# 	_slime.ubah_state_slime("slime action")
 		else:
-			slime.change_state_slime("slime idle")
+			slime.ubah_state_slime("slime idle")
