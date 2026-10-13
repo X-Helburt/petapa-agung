@@ -2,6 +2,27 @@
 
 [ext_resource type="Script" uid="uid://cehwlg28ai3vp" path="res://scripe/tengkorang.gd" id="1_36uc6"]
 [ext_resource type="Texture2D" uid="uid://cfyu5ru5rnpy0" path="res://sprites/characters/blpixelartist_Skeleton Army/Skeleton_King.png" id="1_er814"]
+[ext_resource type="Texture2D" uid="uid://bkxn0w0amvae0" path="res://sprites/characters/Tiny RPG Character Asset Pack -Demo Soldier&Orc/Tiny RPG Character Asset Pack -Demo Soldier&Orc/Orc/Orc.png" id="2_0fjpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r26k5"]
+atlas = ExtResource("2_0fjpq")
+region = Rect2(0, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8ku5"]
+atlas = ExtResource("2_0fjpq")
+region = Rect2(0, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jged6"]
+atlas = ExtResource("2_0fjpq")
+region = Rect2(200, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beui7"]
+atlas = ExtResource("2_0fjpq")
+region = Rect2(200, 300, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hvps"]
+atlas = ExtResource("2_0fjpq")
+region = Rect2(400, 300, 200, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36uc6"]
 atlas = ExtResource("1_er814")
@@ -9,6 +30,26 @@ region = Rect2(0, 0, 37, 63)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qxhxg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r26k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8ku5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jged6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beui7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hvps")
+}],
+"loop": 1,
+"name": &"teng",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_36uc6")
@@ -31,7 +72,7 @@ script = ExtResource("1_36uc6")
 position = Vector2(0, 2.3841858e-07)
 scale = Vector2(1, 0.941)
 sprite_frames = SubResource("SpriteFrames_qxhxg")
-animation = &"tengkorak idle"
+animation = &"teng"
 autoplay = "tengkorak idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160194953]

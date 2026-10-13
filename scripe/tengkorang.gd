@@ -18,7 +18,6 @@ var regen_tengkorak := 3
 
 
 func _ready():
-	#sprite.play("slime idle")
 	hitbox.area_entered.connect(kena_serang)
 	
 	

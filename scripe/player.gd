@@ -16,6 +16,7 @@ var regen : int = 1
 var debuff_slow : float = 1.0
 var debuff_damage : int = 1
 
+
 var speed : float = KECEPATAN * debuff_slow
 var damage_player : int = 2 * debuff_damage
 
@@ -35,10 +36,11 @@ func _ready():
 
 	# Load states
 	states["idle"] =preload("res://scripe/states player/IdleState.gd").new()
-	states["jalan"] =preload("res://scripe/states player/JalanState.gd").new()
+	states["jalan"] = preload("res://scripe/states player/JalanState.gd").new()
 	states["serang"] =preload("res://scripe/states player/SerangState.gd").new()
 	states["mati"] =preload("res://scripe/states player/MatiState.gd").new()
-	states["state"] =preload("res://scripe/states player/State.gd").new()
+	states["state"] = preload("res://scripe/states player/State.gd").new()
+	states["bola_api"] = preload("res://scripe/states player/sihir.gd").new()
 	
 
 	if darah_player:

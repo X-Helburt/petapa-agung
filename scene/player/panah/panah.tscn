@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dcr5cmyu3kg5s"]
+
+[ext_resource type="Texture2D" uid="uid://g350q6m38cyd" path="res://sprites/characters/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Arrow(Projectile)/Arrow01(32x32).png" id="1_utcn6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qxhxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_utcn6")
+}],
+"loop": 1,
+"name": &"arrow",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2128910671]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=654133240]
+sprite_frames = SubResource("SpriteFrames_qxhxg")
+animation = &"arrow"

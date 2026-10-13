@@ -517,6 +517,11 @@ animations = [{
 "name": &"mati",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 0.7,
 "texture": SubResource("AtlasTexture_fixnt")
@@ -612,6 +617,9 @@ size = Vector2(10, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gpci0"]
 radius = 22.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_r6kgf"]
+font_color = Color(1, 0.07999998, 0.07999998, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpci0"]
 radius = 6.0
 
@@ -624,11 +632,11 @@ script = ExtResource("1_player")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1188982999]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_qxhxg")
-animation = &"diem bawah"
+animation = &"jalan atas-samping"
 autoplay = "diem bawah"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1125920886]
-position = Vector2(3, 15)
+position = Vector2(1, 15)
 shape = SubResource("RectangleShape2D_5jc4t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=850185454]
@@ -647,6 +655,7 @@ offset_left = -9.0
 offset_top = -27.0
 offset_right = 31.0
 offset_bottom = -4.0
+label_settings = SubResource("LabelSettings_r6kgf")
 
 [node name="regen" type="Timer" parent="." unique_id=1703150647]
 

@@ -16,6 +16,8 @@ func physics_update(_delta):
 	# Jika tombol serang ditekan saat sedang jalan, langsung serang
 	if Input.is_action_pressed("tombol_serang"):
 		player.ubah_state("serang")
+	elif Input.is_action_just_pressed("tombol_sihir"):
+		player.ubah_state("bola_api")
 		return
 	
 	var input_dir = Vector2.ZERO

@@ -12,7 +12,6 @@ func slime_mendeteksi(body: Node2D) -> void:
 			slime.on_player_terdeteksi(body)
 
 func slime_tidak_mendeteksi(body: Node2D) -> void:
-	await get_tree().create_timer(0.603).timeout
 	if body.name == "player":
 		if slime and slime.has_method("on_player_hilang"):
 			slime.on_player_hilang(body)

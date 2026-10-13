@@ -16,7 +16,7 @@ func physics_update(_delta: float) -> void:
 	var jarak = arah.length()
 
 	# Jika sudah dekat dengan player, beralih ke state serang
-	if jarak <= JARAK_SERANG:
+	if jarak <= JARAK_SERANG - 5:
 		slime.ubah_state_slime("slime serang")
 		return
 

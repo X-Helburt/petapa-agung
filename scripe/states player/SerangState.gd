@@ -18,6 +18,7 @@ func enter():
 	var arah_sekarang = get_arah_sekarang()
 	if arah_sekarang != Vector2.ZERO:
 		player.arah_terakhir = arah_sekarang
+		
 	
 	setup_animasi_serang(player.arah_terakhir, animasi)
 
@@ -43,13 +44,6 @@ func get_arah_sekarang() -> Vector2:
 	return arah
 
 func setup_animasi_serang(arah: Vector2, animasi: AnimatedSprite2D):
-	const KECEPATAN_SLIDE = 0     
-	player.velocity = arah.normalized() * KECEPATAN_SLIDE
-	
-	
-	# Reset flip sebelum menentukan arah
-	animasi.flip_h = false
-	
 	# serang dagonal kanan ke bawah
 	if arah.x > 0 and arah.y > 0:
 		animasi.play("serang bawah-samping")
@@ -82,7 +76,7 @@ func setup_animasi_serang(arah: Vector2, animasi: AnimatedSprite2D):
 		animasi.play("serang bawah")
 	else:
 		animasi.play("serang bawah")
-
+		
 
 func physics_update(_delta):
 	# Pertahankan posisi/kecepatan player tetap berhenti saat sedang menyerang
