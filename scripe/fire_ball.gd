@@ -1,15 +1,14 @@
 extends CharacterBody2D
 
-# ======================================================================
-#  FIRE BALL - Projectile yang terbang lurus ke arah player menghadap.
-#  Damage: 5  |  Kecepatan: 10000 * delta  |  Hancur setelah 3 detik
-# ======================================================================
 
-# --- Properti ---
+# Properti
 var arah_terbang : Vector2 = Vector2.RIGHT   # diisi oleh sihir.gd sebelum add_child
 var kecepatan : float = 10000.0
 var damage : int = 5
-var umur_maksimal : float = 3.0              # detik sebelum fire ball hancur sendiri
+var umur_maksimal : float = 3.0  
+
+@onready var attack_box: Area2D = $AttackBox
+@onready var attack_shape: CollisionShape2D = $AttackBox/CollisionShape2D            
 
 var _timer_hidup : float = 0.0
 
@@ -20,14 +19,11 @@ func _ready() -> void:
 		anim.play("default")
 
 	# Hubungkan signal Area2D untuk mendeteksi tabrakan
-	var area = $Area2D
-	if area and not area.body_entered.is_connected(_on_body_entered):
-		area.body_entered.connect(_on_body_entered)
-	if area and not area.area_entered.is_connected(_on_area_entered):
-		area.area_entered.connect(_on_area_entered)
-
+	set_attack_box_active(false)
+	
 func _physics_process(delta: float) -> void:
 	# Gerakkan fire ball ke arah yang sudah ditentukan
+	set_attack_box_active(true)
 	velocity = arah_terbang * kecepatan * delta
 	move_and_slide()
 
@@ -55,20 +51,9 @@ func _on_body_entered(body: Node2D) -> void:
 	# Hancurkan fire ball setelah kena sesuatu
 	queue_free()
 
-# ---------------------------------------------------------------
-#  Saat fire ball menabrak AREA (Area2D lain, misalnya hurtbox musuh)
-# ---------------------------------------------------------------
-func _on_area_entered(area: Area2D) -> void:
-	# Jangan menabrak area milik player sendiri
-	if area.get_parent() and (area.get_parent().name == "Player" or area.get_parent().is_in_group("player")):
-		return
-
-	# Cari parent dari area (biasanya musuh)
-	var target = area.get_parent()
-	if target and "darah" in target:
-		target.darah -= damage
-		if target.has_method("kena_serang_fireball"):
-			target.kena_serang_fireball(damage)
-
-	queue_free()
-
+func set_attack_box_active(active: bool) -> void:
+	if attack_box:
+		attack_box.set_deferred("monitoring", active)
+		attack_box.set_deferred("monitorable", active)
+	if attack_shape:
+		attack_shape.set_deferred("disabled", !active)

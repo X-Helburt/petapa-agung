@@ -44,6 +44,9 @@ func get_arah_sekarang() -> Vector2:
 	return arah
 
 func setup_animasi_serang(arah: Vector2, animasi: AnimatedSprite2D):
+	const KECEPATAN_SLIDE = 0
+	player.velocity = arah.normalized() * KECEPATAN_SLIDE
+	
 	# serang dagonal kanan ke bawah
 	if arah.x > 0 and arah.y > 0:
 		animasi.play("serang bawah-samping")

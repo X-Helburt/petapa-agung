@@ -31,7 +31,7 @@ func kena_serang(area):
 		var damage_diterima = 1
 		if player_node and "damage_player" in player_node:
 			damage_diterima = player_node.damage_player
-		# darah slime
+		# darah 
 		darah -= damage_diterima
 		if darah <= 0:
 			label_hp.hide()

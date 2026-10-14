@@ -10,13 +10,8 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-# -------------------------------------------------------------------
-#  Membuat fire ball dan menambahkannya ke scene utama.
-#  Fire ball akan terbang ke arah yang diberikan secara otomatis
-#  (logika gerak ada di script fire_ball.gd yang di-attach ke scene).
-# -------------------------------------------------------------------
+
 func serang_fireball(arah: Vector2) -> void:
-	# 1) Buat instance dari scene fire_ball
 	var bola_api = fire_ball_scene.instantiate()
 
 	# 2) Beri tahu fire_ball arah terbangnya SEBELUM ditambahkan ke scene
