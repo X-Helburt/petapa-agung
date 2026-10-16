@@ -652,9 +652,9 @@ debug_color = Color(0.9449536, 3.7541986e-06, 0.59697497, 0.41960785)
 
 [node name="Darah Player" type="Label" parent="." unique_id=918832617]
 offset_left = -9.0
-offset_top = -27.0
-offset_right = 31.0
-offset_bottom = -4.0
+offset_top = -57.0
+offset_right = 7.0
+offset_bottom = -34.0
 label_settings = SubResource("LabelSettings_r6kgf")
 
 [node name="regen" type="Timer" parent="." unique_id=1703150647]

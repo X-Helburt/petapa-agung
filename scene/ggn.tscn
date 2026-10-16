@@ -228,5 +228,5 @@ position = Vector2(287, 144)
 position = Vector2(307, 117)
 script = SubResource("GDScript_ifcqg")
 
-[node name="player" parent="." unique_id=1042506441 instance=ExtResource("8_fr4ee")]
+[node name="player" parent="." unique_id=1042506441 groups=["player"] instance=ExtResource("8_fr4ee")]
 position = Vector2(14, 128)

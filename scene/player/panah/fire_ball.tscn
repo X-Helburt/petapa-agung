@@ -49,3 +49,4 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=560601608]
 shape = SubResource("CircleShape2D_r6kgf")
+debug_color = Color(0.8799269, 0.27805102, 0.5039681, 0.41960785)

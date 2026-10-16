@@ -93,7 +93,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 #terkena serang
-func kena_serang(area):
+func kena_serang(area: Area2D) -> void:
 	if sudah_mati or kebal:
 		return
 

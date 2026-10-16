@@ -10,7 +10,10 @@ var state: State
 var states = {}
 var vel = Vector2.ZERO
 var arah_terakhir = Vector2.RIGHT
+
+var darah_tameng : int = 5
 var darah : int = MAX_DARAH
+var tameng : int = 2
 var regen : int = 1
 
 var debuff_slow : float = 1.0
@@ -44,7 +47,8 @@ func _ready():
 	
 
 	if darah_player:
-		darah_player.text = str(darah)
+		darah_player.text = str(darah_tameng) + "
+		" + str(darah)
 
 	# Kasih referensi player ke setiap state
 	for s in states.values():
@@ -121,7 +125,7 @@ func kena_serang(area: Area2D) -> void:
 			elif "damage" in musuh_node:
 				damage_diterima = musuh_node.damage
 		
-		darah -= damage_diterima
+		darah -= damage_diterima / tameng
 		if darah_player:
 			darah_player.text = str(max(darah, 0))
 		
