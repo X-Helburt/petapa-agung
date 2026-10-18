@@ -16,6 +16,7 @@ func physics_update(_delta):
 	# Jika tombol serang ditekan saat sedang jalan, langsung serang
 	if Input.is_action_pressed("tombol_serang"):
 		player.ubah_state("serang")
+		return
 	elif Input.is_action_just_pressed("tombol_sihir"):
 		player.ubah_state("bola_api")
 		return
@@ -89,4 +90,6 @@ func physics_update(_delta):
 	elif input_dir.y > 0:
 		animasi.scale.x = 1
 		animasi.play("jalan bawah")
+
+	
 	

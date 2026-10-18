@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dyewn0gwja632"]
+[gd_scene format=4 uid="uid://jssr6lugrnsj"]
 
 [ext_resource type="Script" uid="uid://ddiktttiohjhy" path="res://scripe/UI/ui_loby.gd" id="1_l7r48"]
 [ext_resource type="Texture2D" uid="uid://dylltml7hn3kr" path="res://sprites/tilesets/floors/wooden.png" id="1_x6nd2"]

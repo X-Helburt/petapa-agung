@@ -1,33 +1,43 @@
 extends CharacterBody2D
 
-
 # Properti
 var arah_terbang : Vector2 = Vector2.RIGHT 
-var kecepatan : float = 22950.0
+var kecepatan : float = 200.0
 var damage : int = 5
-var umur_maksimal : float = 1.0 
+var damage_player : int = 5  
+var umur_maksimal : float = 2.0 
+var penembak : Node2D = null
 
+var _timer_hidup : float = 0.0
+var sudah_mengenai : bool = false
 
-
-@onready var anim:= $AnimatedSprite2D
+# Penamaan node untuk mempermudah akses
+@onready var anim := $AnimatedSprite2D
 @onready var attack_box: Area2D = $AttackBox
 @onready var attack_shape: CollisionShape2D = $AttackBox/CollisionShape2D            
 
-var _timer_hidup : float = 0.0
 
 func _ready() -> void:
-	# Mulai animasi default (api berputar/bergerak)
-	
+	# Jalankan animasi
 	if anim:
-		anim.play("default")
-		
-	attack_box.area_entered.connect(nyerang)
-
-
+		if anim.sprite_frames and anim.sprite_frames.has_animation("fire_ball"):
+			anim.play("fire_ball")
+		elif anim.sprite_frames and anim.sprite_frames.has_animation("default"):
+			anim.play("default")
 	
+	# Pastikan AttackBox dapat mendeteksi dan dideteksi
+	attack_box.monitoring = true
+	attack_box.monitorable = true
+	if attack_shape:
+		attack_shape.disabled = false
+		
+	if not attack_box.area_entered.is_connected(nyerang):
+		attack_box.area_entered.connect(nyerang)
+
+
 func _physics_process(delta: float) -> void:
 	# Gerakkan fire ball ke arah yang sudah ditentukan
-	velocity = arah_terbang * kecepatan * delta
+	velocity = arah_terbang * kecepatan
 	move_and_slide()
 
 	# Hitung umur fire ball, hancurkan jika sudah melewati batas
@@ -35,22 +45,33 @@ func _physics_process(delta: float) -> void:
 	if _timer_hidup >= umur_maksimal:
 		queue_free()
 
-#fungsi berhenti obstakle
-func nyerang(body):
-	print("kill")
-	# Jangan merusak player sendiri
-	if body.name == "Player" or body.is_in_group("player"):
-		print("tes")
+
+func nyerang(area: Area2D):
+	if sudah_mengenai or not area:
 		return
 
-	# Jika body punya variabel "darah", kurangi
-	if "darah" in body:
-		body.darah -= damage
-		print("no")
-		# Panggil fungsi kena_serang jika ada (untuk trigger animasi/state mati)
-		if body.has_method("kena_serang_fireball"):
-			body.kena_serang_fireball(damage)
-			print('yes')
+	var target = area.get_parent()
 
-	# Hancurkan fire ball setelah kena sesuatu
+	# Abaikan jika target adalah fireball itu sendiri atau si player
+	if  target.is_in_group("player"):
+		return
+
+	# Tandai sudah mengenai agar tidak memicu damage ganda
+	sudah_mengenai = true
+	if attack_shape:
+		attack_shape.set_deferred("disabled", true)
+
+	var musuh = target if target else area
+
+	# Jika musuh memiliki fungsi kena_serang (seperti slime.gd atau tengkorang.gd)
+	if musuh and musuh.has_method("kena_serang"):
+		# Kirimkan attack_box fireball ini agar musuh memproses damage_player (5) dan animasi/darahnya
+		musuh.kena_serang(attack_box)
+	elif musuh and "darah" in musuh:
+		# Fallback jika musuh tidak punya method kena_serang standar
+		musuh.darah -= damage
+		if musuh.has_method("kena_serang_fireball"):
+			musuh.kena_serang_fireball(damage)
+
+
 	queue_free()

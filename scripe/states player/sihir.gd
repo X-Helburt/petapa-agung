@@ -1,7 +1,7 @@
 extends State
 
 # Preload scene fire_ball.tscn
-var fire_ball_scene : PackedScene = preload("res://scene/player/panah/fire_ball.tscn")
+var fire_ball_scene : PackedScene = preload("res://scene/player/projektile/fire_ball.tscn")
 
 func enter() -> void:
 	# Spawn fire ball ke arah terakhir player, lalu langsung kembali ke idle
@@ -19,6 +19,7 @@ func serang_fireball(arah: Vector2) -> void:
 	if arah == Vector2.ZERO:
 		arah = Vector2.RIGHT  # default ke kanan kalau tidak ada arah
 	bola_api.arah_terbang = arah.normalized()
+	bola_api.penembak = player
 
 	# 3) Flip sprite fire ball sesuai arah horizontal
 	var sprite = bola_api.get_node("AnimatedSprite2D")

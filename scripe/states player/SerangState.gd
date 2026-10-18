@@ -6,9 +6,9 @@ func enter():
 	
 	# Pastikan animasi serangan tidak looping agar signal animation_finished terpanggil
 	if animasi.sprite_frames:
-		animasi.sprite_frames.set_animation_loop("serang samping", false)
-		animasi.sprite_frames.set_animation_loop("serang atas", false)
-		animasi.sprite_frames.set_animation_loop("serang bawah", false)
+		for anim_name in animasi.sprite_frames.get_animation_names():
+			if anim_name.begins_with("serang"):
+				animasi.sprite_frames.set_animation_loop(anim_name, false)
 
 	# Hubungkan signal animation_finished jika belum terhubung
 	if not animasi.animation_finished.is_connected(_on_animation_finished):
@@ -80,10 +80,19 @@ func setup_animasi_serang(arah: Vector2, animasi: AnimatedSprite2D):
 	else:
 		animasi.play("serang bawah")
 		
+		
 
 func physics_update(_delta):
 	# Pertahankan posisi/kecepatan player tetap berhenti saat sedang menyerang
 	player.velocity = Vector2.ZERO
+	var animasi = player.get_animasi()
+	# Fallback: jika animasi sudah selesai (tidak playing) tapi signal tidak terpanggil
+	if animasi and not animasi.is_playing():
+		var arah_saat_ini = get_arah_sekarang()
+		if arah_saat_ini != Vector2.ZERO:
+			player.ubah_state("jalan")
+		else:
+			player.ubah_state("idle")
 
 func _on_animation_finished():
 	# Ketika animasi serangan selesai, otomatis kembali ke idle atau jalan

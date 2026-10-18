@@ -68,11 +68,11 @@ size = Vector2(27, 52)
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=224605847]
 script = ExtResource("1_36uc6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1988696075]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1988696075 groups=["musuh"]]
 position = Vector2(0, 2.3841858e-07)
 scale = Vector2(1, 0.941)
 sprite_frames = SubResource("SpriteFrames_qxhxg")
-animation = &"teng"
+animation = &"tengkorak idle"
 autoplay = "tengkorak idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160194953]

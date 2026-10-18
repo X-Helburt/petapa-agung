@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+# properti
 const KECEPATAN : float = 17891
 const MAX_DARAH : int = 10
 
@@ -25,6 +27,7 @@ var damage_player : int = 2 * debuff_damage
 
 var posisi_awal : Vector2 = Vector2.ZERO
 
+# penamaan node untuk mempermudah akses
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_box: Area2D = $AttackBox
 @onready var attack_shape: CollisionShape2D = $AttackBox/CollisionShape2D 
@@ -125,10 +128,15 @@ func kena_serang(area: Area2D) -> void:
 			elif "damage" in musuh_node:
 				damage_diterima = musuh_node.damage
 		
-		darah -= damage_diterima / tameng
+		darah_tameng -= damage_diterima / tameng
 		if darah_player:
-			darah_player.text = str(max(darah, 0))
+			darah_player.text = str(darah_tameng) + "
+		" + str(darah)
 		
+		if darah_tameng <= 0:
+			darah -= damage_diterima / tameng
+			
+			darah_player.text = str(darah)
 		if darah <= 0:
 			ubah_state("mati")
 		else:
