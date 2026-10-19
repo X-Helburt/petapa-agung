@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buf3dvfbi5ii7"
-path="res://.godot/imported/1601.m00.i104.n024.S.c12.286495379 Flame with smoke animation frames in pixel art style.jpg-584db886f1cc34d05825f0de542590c7.ctex"
+uid="uid://dbir7bvv5dqk"
+path="res://.godot/imported/kopi.png-479b00be3d24b2f74e149f6c67ab7c22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/flame-with-smoke-animation-frames-pixel-art-style/1601.m00.i104.n024.S.c12.286495379 Flame with smoke animation frames in pixel art style.jpg"
-dest_files=["res://.godot/imported/1601.m00.i104.n024.S.c12.286495379 Flame with smoke animation frames in pixel art style.jpg-584db886f1cc34d05825f0de542590c7.ctex"]
+source_file="res://sprites/characters/flame-with-smoke-animation-frames-pixel-art-style/kopi.png"
+dest_files=["res://.godot/imported/kopi.png-479b00be3d24b2f74e149f6c67ab7c22.ctex"]
 
 [params]
 

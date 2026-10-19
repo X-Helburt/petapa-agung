@@ -24,10 +24,22 @@ func serang_fireball(arah: Vector2) -> void:
 	# 3) Flip sprite fire ball sesuai arah horizontal
 	var sprite = bola_api.get_node("AnimatedSprite2D")
 	if sprite:
-		if arah.x < 0:
-			sprite.scale.x = -1
-		else:
-			sprite.scale.x = 1
+		if arah.x > 0 and arah.y > 0 : # kanan bawah
+			sprite.rotation_degrees = -45.0
+		elif arah.x < 0 and arah.y > 0:# kiri bawah
+			sprite.rotation_degrees = 45.0
+		elif arah.x > 0 and arah.y < 0: # kanan atas
+			sprite.rotation_degrees = -135
+		elif arah.x < 0 and arah.y < 0: # kiri bawah
+			sprite.rotation_degrees = 135
+		elif arah.y > 0: # atas
+			sprite.rotation_degrees = 360
+		elif arah.y < 0: # bawah
+			sprite.rotation_degrees = -180
+		elif arah.x < 0: #kiri
+			sprite.rotation_degrees = 90.0
+		elif arah.x > 0: #kanan
+			sprite.rotation_degrees = -90.0
 
 	# 4) Tambahkan ke scene utama (bukan child player, supaya fire ball
 	#    tidak ikut bergerak saat player bergerak)

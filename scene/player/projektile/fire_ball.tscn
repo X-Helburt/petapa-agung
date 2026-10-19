@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://cpugim4p14cu7"]
 
-[ext_resource type="Texture2D" uid="uid://buf3dvfbi5ii7" path="res://sprites/characters/flame-with-smoke-animation-frames-pixel-art-style/1601.m00.i104.n024.S.c12.286495379 Flame with smoke animation frames in pixel art style.jpg" id="2_hlq0h"]
+[ext_resource type="Texture2D" uid="uid://dbir7bvv5dqk" path="res://sprites/characters/flame-with-smoke-animation-frames-pixel-art-style/kopi.png" id="2_iqa1h"]
 [ext_resource type="Script" uid="uid://uxbu2idiweql" path="res://scripe/fire_ball.gd" id="2_script"]
-[ext_resource type="Texture2D" uid="uid://b1dpd67ivimjn" path="res://sprites/characters/video-game-explosion-animation-pixel-art-explosion-animation-frames/1601.m00.i104.n010.P.c25.259592090 Video game explosion animation in Pixel Art. Explosion animation frames.jpg" id="3_iqa1h"]
+[ext_resource type="Texture2D" uid="uid://c1kkt6svdnsup" path="res://sprites/characters/video-game-explosion-animation-pixel-art-explosion-animation-frames/1601.m00.i104.n010.P.c25.259592090 Video game explosion animation in Pixel Art. Explosion animation frames.png" id="3_iqa1h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iqa1h"]
-atlas = ExtResource("2_hlq0h")
-region = Rect2(0, 0, 2250, 4500)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dxve"]
+atlas = ExtResource("2_iqa1h")
+region = Rect2(4500, 0, 2250, 4500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8l8df"]
-atlas = ExtResource("2_hlq0h")
-region = Rect2(2250, 0, 2250, 4500)
+atlas = ExtResource("2_iqa1h")
+region = Rect2(0, 0, 2250, 4500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7aomw"]
-atlas = ExtResource("2_hlq0h")
-region = Rect2(4500, 0, 2250, 4500)
+atlas = ExtResource("2_iqa1h")
+region = Rect2(2250, 0, 2250, 4500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2j4t"]
 atlas = ExtResource("3_iqa1h")
@@ -43,13 +43,13 @@ region = Rect2(3860, 2250, 1930, 2250)
 [sub_resource type="SpriteFrames" id="SpriteFrames_qxhxg"]
 animations = [{
 "frames": [{
-"duration": 0.85,
-"texture": SubResource("AtlasTexture_iqa1h")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dxve")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8l8df")
 }, {
-"duration": 0.9,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7aomw")
 }],
 "loop": 1,
@@ -81,19 +81,20 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6kgf"]
-radius = 48.83646
+radius = 24.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=403256881]
 script = ExtResource("2_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1597263151]
-position = Vector2(-25.97718, 7.277396)
-rotation = -1.5808156
-scale = Vector2(0.071021765, 0.0510165)
+position = Vector2(0.5717468, -0.17677355)
+rotation = -1.5707964
+scale = Vector2(0.03726105, 0.037598606)
 sprite_frames = SubResource("SpriteFrames_qxhxg")
 animation = &"fire_ball"
 autoplay = "fire_ball"
-frame_progress = 0.6144604
+frame_progress = 0.7058429
+offset = Vector2(-125.0397, -680.1381)
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=253685848]
 
