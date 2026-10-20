@@ -57,10 +57,10 @@ animations = [{
 "speed": 8.39
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_w2j4t")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("AtlasTexture_10hpm")
 }, {
 "duration": 1.0,
@@ -69,21 +69,21 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m8o1b")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_lxgnt")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_30kuc")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"meledak",
-"speed": 5.0
+"speed": 9.31
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6kgf"]
 radius = 24.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=403256881]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=403256881 groups=["projektile"]]
 script = ExtResource("2_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1597263151]
@@ -91,9 +91,10 @@ position = Vector2(0.5717468, -0.17677355)
 rotation = -1.5707964
 scale = Vector2(0.03726105, 0.037598606)
 sprite_frames = SubResource("SpriteFrames_qxhxg")
-animation = &"fire_ball"
+animation = &"meledak"
 autoplay = "fire_ball"
-frame_progress = 0.7058429
+frame = 5
+frame_progress = 1.0
 offset = Vector2(-125.0397, -680.1381)
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=253685848]

@@ -50,9 +50,7 @@ func _ready():
 	
 
 	if darah_player:
-		darah_player.text = str(darah_tameng) + "
-		" + str(darah)
-
+		darah_player.text = "%d | %d" % [darah_tameng, darah]
 	# Kasih referensi player ke setiap state
 	for s in states.values():
 		s.player = self
@@ -119,6 +117,11 @@ func kena_serang(area: Area2D) -> void:
 	if area.get_parent() == self:
 		return 
 
+	var player = area.get_parent()
+
+	if player.is_in_group("projektile"):
+		return
+
 	if area.name == "AttackBox" and (area.monitoring or area.monitorable):
 		var musuh_node = area.get_parent()
 		var damage_diterima = 1
@@ -130,8 +133,7 @@ func kena_serang(area: Area2D) -> void:
 		
 		darah_tameng -= damage_diterima / tameng
 		if darah_player:
-			darah_player.text = str(darah_tameng) + "
-		" + str(darah)
+			darah_player.text = "%d | %d" % [darah_tameng, darah]
 		
 		if darah_tameng <= 0:
 			darah -= damage_diterima / tameng
@@ -178,9 +180,10 @@ func respawn() -> void:
 	sudah_mati_player = false
 	kebal_player = false
 	darah = MAX_DARAH
+	darah_tameng = 5
 	
 	if darah_player:
-		darah_player.text = str(darah)
+		darah_player.text = "%d | %d" % [darah_tameng, darah]
 		darah_player.show()
 	
 	if collision_player:

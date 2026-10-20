@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Properti
 var arah_terbang : Vector2 = Vector2.RIGHT 
-var kecepatan : float = 200.0
+var kecepatan : float = 18790
 var damage : int = 5
 var damage_player : int = 5  
 var umur_maksimal : float = 2.0 
@@ -15,7 +15,7 @@ var sudah_mengenai : bool = false
 @onready var anim := $AnimatedSprite2D
 @onready var attack_box: Area2D = $AttackBox
 @onready var attack_shape: CollisionShape2D = $AttackBox/CollisionShape2D            
-
+@onready var fire_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	# Jalankan animasi
@@ -37,12 +37,16 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Gerakkan fire ball ke arah yang sudah ditentukan
-	velocity = arah_terbang * kecepatan
+	velocity = arah_terbang * kecepatan * delta
 	move_and_slide()
 
 	# Hitung umur fire ball, hancurkan jika sudah melewati batas
 	_timer_hidup += delta
 	if _timer_hidup >= umur_maksimal:
+		fire_sprite.play("meledak")
+		kecepatan = 0
+		await fire_sprite.animation_finished
+
 		queue_free()
 
 
@@ -51,6 +55,9 @@ func nyerang(area: Area2D):
 		return
 
 	var target = area.get_parent()
+
+	if target.is_in_group("projektile"):
+		return 
 
 	# Abaikan jika target adalah fireball itu sendiri atau si player
 	if  target.is_in_group("player"):
@@ -73,5 +80,9 @@ func nyerang(area: Area2D):
 		if musuh.has_method("kena_serang_fireball"):
 			musuh.kena_serang_fireball(damage)
 
+	fire_sprite.play("meledak")
+	kecepatan = 0
+	await fire_sprite.animation_finished
+	
 
 	queue_free()

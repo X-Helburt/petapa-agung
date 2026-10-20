@@ -35,7 +35,7 @@ func serang_fireball(arah: Vector2) -> void:
 		elif arah.y > 0: # atas
 			sprite.rotation_degrees = 360
 		elif arah.y < 0: # bawah
-			sprite.rotation_degrees = -180
+			sprite.rotation_degrees = 180
 		elif arah.x < 0: #kiri
 			sprite.rotation_degrees = 90.0
 		elif arah.x > 0: #kanan
