@@ -31,10 +31,11 @@ var posisi_awal : Vector2 = Vector2.ZERO
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_box: Area2D = $AttackBox
 @onready var attack_shape: CollisionShape2D = $AttackBox/CollisionShape2D 
-@onready var darah_player: Label = $"Darah Player"
 @onready var hurtbox_player: Area2D = $hurtbox
 @onready var collision_player: CollisionShape2D = $CollisionShape2D
 @onready var regen_player: Timer = $regen
+@onready var darah_player: TextureProgressBar = $TextureProgressBar
+
 
 
 func _ready():
@@ -50,7 +51,9 @@ func _ready():
 	
 
 	if darah_player:
-		darah_player.text = "%d | %d" % [darah_tameng, darah]
+		darah_player.max_value = MAX_DARAH
+		darah_player.value = darah
+		
 	# Kasih referensi player ke setiap state
 	for s in states.values():
 		s.player = self
@@ -114,12 +117,11 @@ func kena_serang(area: Area2D) -> void:
 	if sudah_mati_player or kebal_player:
 		return
 	
-	if area.get_parent() == self:
+	var penyerang = area.get_parent()
+	if penyerang == null or penyerang == self:
 		return 
 
-	var player = area.get_parent()
-
-	if player.is_in_group("projektile"):
+	if penyerang.is_in_group("projektile"):
 		return
 
 	if area.name == "AttackBox" and (area.monitoring or area.monitorable):
@@ -131,14 +133,11 @@ func kena_serang(area: Area2D) -> void:
 			elif "damage" in musuh_node:
 				damage_diterima = musuh_node.damage
 		
-		darah_tameng -= damage_diterima / tameng
+		darah -= damage_diterima / tameng
 		if darah_player:
-			darah_player.text = "%d | %d" % [darah_tameng, darah]
+			darah_player.value = darah
 		
-		if darah_tameng <= 0:
-			darah -= damage_diterima / tameng
-			
-			darah_player.text = str(darah)
+	
 		if darah <= 0:
 			ubah_state("mati")
 		else:
@@ -166,7 +165,7 @@ func _on_regen_timeout() -> void:
 		darah += regen
 		darah = min(darah, MAX_DARAH)
 		if darah_player:
-			darah_player.text = str(darah)
+			darah_player.value = darah
 		
 		# Jika belum penuh, lanjutkan regenerasi setiap 1 detik
 		if darah < MAX_DARAH:
@@ -183,7 +182,7 @@ func respawn() -> void:
 	darah_tameng = 5
 	
 	if darah_player:
-		darah_player.text = "%d | %d" % [darah_tameng, darah]
+		darah_player.value = darah
 		darah_player.show()
 	
 	if collision_player:

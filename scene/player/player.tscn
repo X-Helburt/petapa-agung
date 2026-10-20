@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://df7x8h2p3q4y5"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://scripe/player.gd" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://d4bf2cobb2k35" path="res://sprites/ui dan bar/Pixel UI pack 3/04.png" id="3_6smn3"]
 [ext_resource type="Texture2D" uid="uid://cqn4luhogscq6" path="res://sprites/characters/player.png" id="8_pq8ty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ellf"]
@@ -587,11 +588,20 @@ size = Vector2(10, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gpci0"]
 radius = 22.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_r6kgf"]
-font_color = Color(1, 0.07999998, 0.07999998, 1)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpci0"]
 radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fspl2"]
+atlas = ExtResource("3_6smn3")
+region = Rect2(289, 62.5, 50, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoq8s"]
+atlas = ExtResource("3_6smn3")
+region = Rect2(0, 62.5, 50, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrcci"]
+atlas = ExtResource("3_6smn3")
+region = Rect2(47.5, 62.5, 50, 20)
 
 [node name="player" type="CharacterBody2D" unique_id=1042506441]
 y_sort_enabled = true
@@ -620,15 +630,6 @@ position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_gpci0")
 debug_color = Color(0.9449536, 3.7541986e-06, 0.59697497, 0.41960785)
 
-[node name="Darah Player" type="Label" parent="." unique_id=918832617]
-offset_left = -28.0
-offset_top = -32.0
-offset_right = 28.0
-offset_bottom = -9.0
-label_settings = SubResource("LabelSettings_r6kgf")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="regen" type="Timer" parent="." unique_id=1703150647]
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=1093346628]
@@ -637,3 +638,14 @@ vertical_alignment = 1
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_gpci0")
 debug_color = Color(0.56929713, 0.55673605, 0, 0.41960785)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1753927931]
+offset_left = -24.0
+offset_top = -30.0
+offset_right = 26.0
+offset_bottom = -10.0
+max_value = 10.0
+value = 10.0
+texture_under = SubResource("AtlasTexture_fspl2")
+texture_over = SubResource("AtlasTexture_aoq8s")
+texture_progress = SubResource("AtlasTexture_lrcci")

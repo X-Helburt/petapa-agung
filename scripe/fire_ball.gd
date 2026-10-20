@@ -55,12 +55,10 @@ func nyerang(area: Area2D):
 		return
 
 	var target = area.get_parent()
+	if target == null or target == self or (penembak and target == penembak):
+		return
 
-	if target.is_in_group("projektile"):
-		return 
-
-	# Abaikan jika target adalah fireball itu sendiri atau si player
-	if  target.is_in_group("player"):
+	if target.is_in_group("projektile") or target.is_in_group("player"):
 		return
 
 	# Tandai sudah mengenai agar tidak memicu damage ganda
