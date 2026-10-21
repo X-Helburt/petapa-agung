@@ -68,7 +68,7 @@ func nyerang(area: Area2D):
 
 	var musuh = target if target else area
 
-	# Jika musuh memiliki fungsi kena_serang (seperti slime.gd atau tengkorang.gd)
+	# Jika musuh memiliki fungsi kena_serang 
 	if musuh and musuh.has_method("kena_serang"):
 		# Kirimkan attack_box fireball ini agar musuh memproses damage_player (5) dan animasi/darahnya
 		musuh.kena_serang(attack_box)
@@ -77,6 +77,7 @@ func nyerang(area: Area2D):
 		musuh.darah -= damage
 		if musuh.has_method("kena_serang_fireball"):
 			musuh.kena_serang_fireball(damage)
+
 
 	fire_sprite.play("meledak")
 	kecepatan = 0

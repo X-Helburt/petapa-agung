@@ -593,15 +593,15 @@ radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fspl2"]
 atlas = ExtResource("3_6smn3")
-region = Rect2(289, 62.5, 50, 20)
+region = Rect2(290.596, 63.133, 40.928, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoq8s"]
 atlas = ExtResource("3_6smn3")
-region = Rect2(0, 62.5, 50, 20)
+region = Rect2(2.4141865, 62.5, 43.367546, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrcci"]
 atlas = ExtResource("3_6smn3")
-region = Rect2(47.5, 62.5, 50, 20)
+region = Rect2(50, 62.025, 39.038834, 20)
 
 [node name="player" type="CharacterBody2D" unique_id=1042506441]
 y_sort_enabled = true
@@ -640,12 +640,12 @@ shape = SubResource("CapsuleShape2D_gpci0")
 debug_color = Color(0.56929713, 0.55673605, 0, 0.41960785)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1753927931]
-offset_left = -24.0
+offset_left = -22.0
 offset_top = -30.0
-offset_right = 26.0
+offset_right = 21.0
 offset_bottom = -10.0
 max_value = 10.0
-value = 10.0
+value = 4.0
 texture_under = SubResource("AtlasTexture_fspl2")
 texture_over = SubResource("AtlasTexture_aoq8s")
 texture_progress = SubResource("AtlasTexture_lrcci")

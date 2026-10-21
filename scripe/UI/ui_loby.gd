@@ -8,8 +8,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
-
+	if Input.is_action_pressed("tombol_serang"):
+		ganti_scene()
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/ggn.tscn") # Replace with function body.
+	ganti_scene()
+
+func ganti_scene() -> void:
+	get_tree().change_scene_to_file("res://scene/ggn.tscn") 
+	# ganti ke scene baru
