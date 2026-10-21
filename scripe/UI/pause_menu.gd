@@ -13,7 +13,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_kembali_pressed() -> void:
-	
 	pass
 
 

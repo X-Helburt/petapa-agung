@@ -23,6 +23,7 @@ func serang_fireball(arah: Vector2) -> void:
 
 	# 3) Flip sprite fire ball sesuai arah horizontal
 	var sprite = bola_api.get_node("AnimatedSprite2D")
+	
 	if sprite:
 		if arah.x > 0 and arah.y > 0 : # kanan bawah
 			sprite.rotation_degrees = -45.0

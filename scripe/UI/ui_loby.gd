@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("tombol_serang"):
+	if Input.is_action_pressed("pause"):
 		ganti_scene()
 
 func _on_button_pressed() -> void:

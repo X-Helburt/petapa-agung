@@ -3,10 +3,11 @@ extends CharacterBody2D
 @onready var sprite := $AnimatedSprite2D
 @onready var hitbox := $Hitbox
 @onready var collision := $CollisionShape2D
-@onready var label_slime : Label = $Darah
 @onready var regen: Timer = $regen
 @onready var attack_box: Area2D = $AttackBox
 @onready var attack_shape: CollisionShape2D = $AttackBox/CollisionShape2D
+@onready var darah_slime: TextureProgressBar = $darah
+
 
 const MAX_DARAH: int = 6
 const SPEED: float = 154.78
@@ -24,6 +25,10 @@ var target_player: CharacterBody2D = null
 
 
 func _ready():
+	darah_slime.hide()
+	darah_slime.max_value = MAX_DARAH
+	darah_slime.value = darah
+	
 	states["slime idle"] = preload("res://scripe/state slime/slimeIdle.gd").new()
 	states["slime jalan"] = preload("res://scripe/state slime/slimeJalan.gd").new()
 	states["slime serang"] = preload("res://scripe/state slime/slimeSerang.gd").new()
@@ -108,15 +113,15 @@ func kena_serang(area: Area2D) -> void:
 		# darah slime
 		darah -= damage_diterima
 		if darah <= 0:
-			label_slime.hide()
+			darah_slime.hide()
 			ubah_state_slime("slime mati")
 		else:
 			# Efek visual kedip merah saat terkena serangan
 			kebal = true
 			sprite.modulate = Color(1.8, 0.4, 0.4)
-			label_slime.show()
+			darah_slime.show()
+			darah_slime.value = darah
 			regen.start(4)
-			label_slime.text = str(darah)
 			await get_tree().create_timer(0.2).timeout
 			sprite.modulate = Color.WHITE
 			kebal = false
@@ -134,7 +139,7 @@ func musuh_mati():
 	
 	sprite.play("slime mati")
 	await sprite.animation_finished
-	
+
 	collision.set_deferred("disabled", true)
 	hide()
 	drop_slime()
@@ -177,7 +182,7 @@ func respawn():
 func _on_regen_timeout() -> void:
 	if darah < MAX_DARAH:
 		darah += regen_slime
-		label_slime.text = str(darah)
+		darah_slime.value = darah
 		
 		
 		

@@ -27,6 +27,10 @@ var damage_player : int = 2 * debuff_damage
 
 var posisi_awal : Vector2 = Vector2.ZERO
 
+# load scene
+var pause : PackedScene = load("res://scene/UI/pause_menu.tscn")
+
+
 # penamaan node untuk mempermudah akses
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_box: Area2D = $AttackBox
@@ -48,6 +52,8 @@ func _ready():
 	states["mati"] =preload("res://scripe/states player/MatiState.gd").new()
 	states["state"] = preload("res://scripe/states player/State.gd").new()
 	states["bola_api"] = preload("res://scripe/states player/sihir.gd").new()
+	
+
 	
 
 	if darah_player:
@@ -97,6 +103,8 @@ func _physics_process(delta):
 	if state:
 		state.physics_update(delta)
 	move_and_slide()
+
+	
 
 # Helper function untuk menyalakan/mematikan AttackBox dengan aman
 func set_attack_box_active(active: bool) -> void:
