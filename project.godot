@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="petapa agung"
-run/main_scene="uid://dyewn0gwja632"
+run/main_scene="uid://jssr6lugrnsj"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

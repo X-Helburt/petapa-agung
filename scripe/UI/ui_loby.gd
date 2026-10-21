@@ -16,4 +16,4 @@ func _on_button_pressed() -> void:
 
 func ganti_scene() -> void:
 	get_tree().change_scene_to_file("res://scene/ggn.tscn") 
-	# ganti ke scene baru
+ # ganti ke scene baru
