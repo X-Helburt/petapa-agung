@@ -52,7 +52,8 @@ func _ready():
 	states["mati"] =preload("res://scripe/states player/MatiState.gd").new()
 	states["state"] = preload("res://scripe/states player/State.gd").new()
 	states["bola_api"] = preload("res://scripe/states player/sihir.gd").new()
-	
+	states["pause"] = preload("res://scripe/states player/ux player/PauseMenu.gd").new()
+	states["inventory"] = preload("res://scripe/states player/ux player/inventory.gd").new()
 
 	
 

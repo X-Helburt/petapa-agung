@@ -45,12 +45,19 @@ func enter():
 
 
 func physics_update(_delta):
-	# Utamakan serangan jika tombol_serang ditekan
+	# fumgsi ux
+	if Input.is_action_just_pressed("pause"):
+		player.ubah_state("pause")
+		return
+	
+	# fungsi serang
 	if Input.is_action_pressed("tombol_serang"):
 		player.ubah_state("serang")
+		return
 	elif Input.is_action_just_pressed("tombol_sihir"):
 		player.ubah_state("bola_api")
 		return
+	
 
 	# kalau ada input arah, pindah ke JalanState
 	if Input.is_action_pressed("bawah") and Input.is_action_pressed("kanan") \

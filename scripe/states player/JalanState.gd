@@ -13,6 +13,11 @@ func enter() -> void:
 	timer_jeda_diagonal = 0.0
 
 func physics_update(_delta):
+	# jika jalan terus ui berhenti
+	if Input.is_action_just_pressed("pause"):
+		player.ubah_state("pause")
+		return
+
 	# Jika tombol serang ditekan saat sedang jalan, langsung serang
 	if Input.is_action_pressed("tombol_serang"):
 		player.ubah_state("serang")
@@ -20,6 +25,7 @@ func physics_update(_delta):
 	elif Input.is_action_just_pressed("tombol_sihir"):
 		player.ubah_state("bola_api")
 		return
+	
 	
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("kanan"):
