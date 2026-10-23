@@ -19,6 +19,16 @@
       "pkgType": 1,
       "pkgUninstallScript": false,
       "pkgVersion": "4.7.0 (x64)"
+    },
+    {
+      "pkgDestination": "res://Jenova/Packages/JenovaMinGWCompiler-14.2.0-LLVM",
+      "pkgHash": "580a5e62920536c947af6c3b1f9409f9",
+      "pkgInstallScript": false,
+      "pkgName": "Minimalist GNU for Windows Toolchain (With LLVM)",
+      "pkgPlatform": 0,
+      "pkgType": 0,
+      "pkgUninstallScript": false,
+      "pkgVersion": "14.2.0 (x64)"
     }
   ]
 }

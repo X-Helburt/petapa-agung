@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dg026n7r5hlaw"]
 
 [ext_resource type="Texture2D" uid="uid://bkxn0w0amvae0" path="res://sprites/characters/Tiny RPG Character Asset Pack -Demo Soldier&Orc/Tiny RPG Character Asset Pack -Demo Soldier&Orc/Orc/Orc.png" id="1_5jg7s"]
+[ext_resource type="Script" uid="uid://c3rjfac5073he" path="res://scripe/org.cpp" id="1_fr784"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fr784"]
 atlas = ExtResource("1_5jg7s")
@@ -53,6 +54,7 @@ animations = [{
 }]
 
 [node name="Org" type="CharacterBody2D" unique_id=229640688 groups=["musuh"]]
+script = ExtResource("1_fr784")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=463189050]
 texture_filter = 1

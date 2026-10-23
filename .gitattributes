@@ -1,3 +1,4 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
 Jenova/Packages/GodotSDK-4.7.0/libGodot.x64.lib filter=lfs diff=lfs merge=lfs -text
+Jenova/Packages/GodotSDK-4.7.0/libGodot.x64.a filter=lfs diff=lfs merge=lfs -text

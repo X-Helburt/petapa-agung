@@ -2,12 +2,14 @@
 .godot/
 /android/
 *.tmp
+Jenova/Packages/JenovaMinGWCompiler-14.2.0-LLVM/
 
 # Temporary build / editor files
 ~*
 *.vcxproj.user
 *.lib
 !Jenova/Packages/GodotSDK-4.7.0/libGodot.x64.lib
+!Jenova/JenovaSDK/Jenova.SDK.x64.lib
 *.exp
 *.obj
 *.pdb

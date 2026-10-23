@@ -12,7 +12,7 @@ using namespace godot;
 using namespace jenova::sdk;
 
 // Self Instance
-CharacterBody2D* self = nullptr;
+static CharacterBody2D* self = nullptr;
 
 // Jenova Script Block Start
 JENOVA_SCRIPT_BEGIN

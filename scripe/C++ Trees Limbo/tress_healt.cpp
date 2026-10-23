@@ -11,7 +11,7 @@ using namespace godot;
 using namespace jenova::sdk;
 
 // Self Instance
-Node* self = nullptr;
+static Node* self = nullptr;
 
 // Jenova Script Block Start
 JENOVA_SCRIPT_BEGIN
