@@ -1,16 +1,17 @@
 {
-    "files.exclude": {
-        "**/*.uid": true,
-        "*.cfg": true,
-        "*.scn": true,
-        "*.sln": true,
-        "*.tscn": true,
-        "*.vcxproj*": true,
-        ".godot": true,
-        ".vs": true,
-        ".vscode": true,
-        "Jenova": true,
-        "project.godot": true,
-        "vc*.pdb": true
-    }
+  "files.exclude": {
+    "**/*.uid": true,
+    "*.cfg": true,
+    "*.scn": true,
+    "*.sln": true,
+    "*.tscn": true,
+    "*.vcxproj*": true,
+    ".godot": true,
+    ".vs": true,
+    ".vscode": true,
+    "Jenova": true,
+    "project.godot": true,
+    "vc*.pdb": true
+  },
+  "godotTools.editorPath.godot4": "c:\\Users\\SHOFIY SALSABILA\\OneDrive\\Desktop\\godot.exe"
 }

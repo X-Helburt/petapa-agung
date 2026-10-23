@@ -2,10 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bkxn0w0amvae0" path="res://sprites/characters/Tiny RPG Character Asset Pack -Demo Soldier&Orc/Tiny RPG Character Asset Pack -Demo Soldier&Orc/Orc/Orc.png" id="1_5jg7s"]
 
-[sub_resource type="CPPScript" id="CPPScript_5jg7s"]
-resource_local_to_scene = false
-resource_name = ""
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fr784"]
 atlas = ExtResource("1_5jg7s")
 region = Rect2(0, 0, 100, 100)
@@ -56,50 +52,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Org" type="CharacterBody2D" unique_id=229640688]
-script = SubResource("CPPScript_5jg7s")
-cpp/source_code = "
-/* Jenova C++ Node Base Script (Meteora) */
-
-// Godot SDK
-#include <Godot/godot.hpp>
-#include <Godot/classes/node.hpp>
-#include <Godot/classes/character_body2d.hpp>
-#include <Godot/variant/variant.hpp>
-
-// Namespaces
-using namespace godot;
-using namespace jenova::sdk;
-
-// Self Instance
-CharacterBody2D* self = nullptr;
-
-// Jenova Script Block Start
-JENOVA_SCRIPT_BEGIN
-
-// Routines
-void OnAwake(Caller* instance)
-{
-	// Called When Node Enters Scene Tree
-	self = GetSelf<CharacterBody2D>(instance);
-}
-void OnDestroy(Caller* instance)
-{
-	// Called When Node Exits Scene Tree
-	self = nullptr;
-}
-void OnReady(Caller* instance)
-{
-	// Called When Node and All It's Children Entered Scene Tree
-}
-void OnProcess(Caller* instance, double _delta)
-{
-	// Called On Every Frame
-}
-
-// Jenova Script Block End
-JENOVA_SCRIPT_END
-"
+[node name="Org" type="CharacterBody2D" unique_id=229640688 groups=["musuh"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=463189050]
 texture_filter = 1

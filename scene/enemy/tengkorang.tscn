@@ -65,10 +65,10 @@ size = Vector2(26, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_er814"]
 size = Vector2(27, 52)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=224605847]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=224605847 groups=["musuh"]]
 script = ExtResource("1_36uc6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1988696075 groups=["musuh"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1988696075]
 position = Vector2(0, 2.3841858e-07)
 scale = Vector2(1, 0.941)
 sprite_frames = SubResource("SpriteFrames_qxhxg")

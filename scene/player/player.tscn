@@ -603,7 +603,9 @@ region = Rect2(2.4141865, 62.5, 43.367546, 20)
 atlas = ExtResource("3_6smn3")
 region = Rect2(50, 62.025, 39.038834, 20)
 
-[node name="player" type="CharacterBody2D" unique_id=1042506441]
+[sub_resource type="LabelSettings" id="LabelSettings_6smn3"]
+
+[node name="player" type="CharacterBody2D" unique_id=1042506441 groups=["player"]]
 y_sort_enabled = true
 collision_layer = 3
 collision_mask = 3
@@ -630,8 +632,6 @@ position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_gpci0")
 debug_color = Color(0.9449536, 3.7541986e-06, 0.59697497, 0.41960785)
 
-[node name="regen" type="Timer" parent="." unique_id=1703150647]
-
 [node name="hurtbox" type="Area2D" parent="." unique_id=1093346628]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=55839401]
@@ -649,3 +649,14 @@ value = 4.0
 texture_under = SubResource("AtlasTexture_fspl2")
 texture_over = SubResource("AtlasTexture_aoq8s")
 texture_progress = SubResource("AtlasTexture_lrcci")
+
+[node name="mana" type="Label" parent="." unique_id=409587476]
+offset_left = -21.0
+offset_top = -49.0
+offset_right = 20.0
+offset_bottom = -26.0
+label_settings = SubResource("LabelSettings_6smn3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="regen" type="Timer" parent="." unique_id=1729681299]

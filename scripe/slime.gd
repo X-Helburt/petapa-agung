@@ -102,7 +102,8 @@ func kena_serang(area: Area2D) -> void:
 	if sudah_mati or kebal:
 		return
 
-	if area.get_parent() == self:
+	var target = area.get_parent()
+	if target == self or target.is_in_group("musuh"):
 		return
 		
 	if area.name == "AttackBox" and (area.monitoring or area.monitorable):

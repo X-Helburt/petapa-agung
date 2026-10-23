@@ -17,6 +17,8 @@ var darah_tameng : int = 5
 var darah : int = MAX_DARAH
 var tameng : int = 2
 var regen : int = 1
+var mana : float = 20
+var regen_mana := 0.5
 
 var debuff_slow : float = 1.0
 var debuff_damage : int = 1
@@ -39,6 +41,7 @@ var pause : PackedScene = load("res://scene/UI/pause_menu.tscn")
 @onready var collision_player: CollisionShape2D = $CollisionShape2D
 @onready var regen_player: Timer = $regen
 @onready var darah_player: TextureProgressBar = $TextureProgressBar
+@onready var mana_player: Label = $mana
 
 
 
@@ -60,7 +63,10 @@ func _ready():
 	if darah_player:
 		darah_player.max_value = MAX_DARAH
 		darah_player.value = darah
-		
+
+	if mana_player:
+		mana_player.text = str(mana)
+
 	# Kasih referensi player ke setiap state
 	for s in states.values():
 		s.player = self
@@ -127,11 +133,8 @@ func kena_serang(area: Area2D) -> void:
 		return
 	
 	var penyerang = area.get_parent()
-	if penyerang == null or penyerang == self:
+	if penyerang == null or penyerang == self or penyerang.is_in_group("projektile"):
 		return 
-
-	if penyerang.is_in_group("projektile"):
-		return
 
 	if area.name == "AttackBox" and (area.monitoring or area.monitorable):
 		var musuh_node = area.get_parent()
@@ -170,6 +173,7 @@ func _on_regen_timeout() -> void:
 	if sudah_mati_player:
 		return
 	
+
 	if darah < MAX_DARAH:
 		darah += regen
 		darah = min(darah, MAX_DARAH)

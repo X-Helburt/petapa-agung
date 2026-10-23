@@ -275,7 +275,7 @@ region = Rect2(3.7333465, 159.92746, 42.761528, 18.251877)
 atlas = ExtResource("5_jokf8")
 region = Rect2(53.43728, 127.62627, 41.80739, 12.854187)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=83552952]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=83552952 groups=["musuh"]]
 script = ExtResource("1_5jc4t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=616057210]
