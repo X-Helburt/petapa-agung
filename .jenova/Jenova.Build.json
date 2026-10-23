@@ -1,0 +1,18 @@
+{
+  "BuildTimestamp": 1792758450,
+  "HeaderCount": 1,
+  "Headers": {
+    "1d3136839538e071323b": "ac61f8469d49ea745f868f758477499e"
+  },
+  "ModuleCount": 3,
+  "Modules": {
+    "3a98f89e474519b6c60b": "Skipped",
+    "d34b4914d18edcbca974": "Skipped",
+    "e1928ce158764478d9ee": "Skipped"
+  },
+  "Proxies": {
+    "JenovaModuleLoader_d34b4914d18edcbca974.cpp": "JenovaModuleLoader",
+    "org_3a98f89e474519b6c60b.cpp": "res://scripe/org.cpp",
+    "tress_healt_e1928ce158764478d9ee.cpp": "res://scripe/C++ Trees Limbo/tress_healt.cpp"
+  }
+}

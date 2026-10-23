@@ -1,0 +1,14 @@
+Timer
+Label
+TextureProgressBar
+Button
+CanvasLayer
+AnimatedSprite2D
+CollisionShape2D
+Area2D
+AnimationPlayer
+TileMapLayer
+CharacterBody2D
+ProgressBar
+NavigationAgent2D
+Camera2D
