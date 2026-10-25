@@ -53,6 +53,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fr784"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_21ug7"]
+radius = 23.0
+
 [node name="Org" type="CharacterBody2D" unique_id=229640688 groups=["musuh"]]
 script = ExtResource("1_fr784")
 
@@ -62,3 +67,15 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_qxhxg")
 animation = &"idle org"
 frame_progress = 0.99019486
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1772411143]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2100470186]
+shape = SubResource("CircleShape2D_fr784")
+debug_color = Color(0.57622415, 0.5529553, 0.08151355, 0.41960785)
+
+[node name="Attackbox" type="Area2D" parent="." unique_id=835757116]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attackbox" unique_id=373498124]
+shape = SubResource("CircleShape2D_21ug7")
+debug_color = Color(0.8756995, 0.32713947, 0.29144368, 0.41960785)

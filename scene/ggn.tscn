@@ -192,20 +192,6 @@ sources/0 = SubResource("TileSetAtlasSource_5ellf")
 sources/1 = SubResource("TileSetAtlasSource_cnun7")
 sources/2 = SubResource("TileSetAtlasSource_dphkj")
 
-[sub_resource type="GDScript" id="GDScript_ifcqg"]
-script/source = "extends CharacterBody2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-"
-
 [node name="Dunia" type="Node2D" unique_id=459118385]
 z_as_relative = false
 
@@ -229,7 +215,6 @@ position = Vector2(220, 91)
 
 [node name="Org" parent="." unique_id=229640688 groups=["musuh"] instance=ExtResource("7_ifcqg")]
 position = Vector2(307, 117)
-script = SubResource("GDScript_ifcqg")
 
 [node name="player" parent="." unique_id=1042506441 instance=ExtResource("8_fr4ee")]
 position = Vector2(14, 128)
