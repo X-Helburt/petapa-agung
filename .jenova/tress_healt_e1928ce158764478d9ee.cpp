@@ -1,10 +1,10 @@
 // Jenova Preprocessor Definitions
-#define JENOVA_VERSION "0.3.9.0"
-#define JENOVA_COMPILER "Microsoft Visual C++ Compiler"
-#define MSVC_COMPILER
+#define JENOVA_VERSION "0.3.9.9"
+#define JENOVA_COMPILER "MinGW GCC Compiler"
+#define MINGW_CLANG_COMPILER
 #define JENOVA_CUSTOM
 
-#line 1
+#line 1 "C:/Users/SHOFIY SALSABILA/OneDrive/Desktop/godot/Petapa agung/scripe/C++ Trees Limbo/tress_healt.cpp"
 /* Jenova C++ Node Base Script (Meteora) */
 
 // Godot SDK
@@ -18,7 +18,7 @@ using namespace godot;
 using namespace jenova::sdk;
 
 // Self Instance
-Node* self = nullptr;
+static Node* self = nullptr;
 
 // Jenova Script Block Start
 namespace JNV_e1928ce158764478d9ee {

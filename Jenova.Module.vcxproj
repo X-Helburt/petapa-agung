@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- J.E.N.O.V.A Vistual Studio Project v0.3.9.0 -->
+<!-- J.E.N.O.V.A Vistual Studio Project v0.3.9.9 -->
 <!-- Developed By Hamid.Memar (MemarDesign™ LLC.) -->
 
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -33,7 +33,7 @@
 		<IntDir>.jenova\VisualStudio\</IntDir>
 		<BuiltInDir>.jenova\BuiltInScripts\</BuiltInDir>
 		<TargetExt>.dll</TargetExt>
-		<JenovaConfiguration>eNqNkV9PwjAUxd/5FMteIePfgM033NDMoBBBXpwhXXeB6tYut60JIXx3u00NBoy+dOk9v3vv2emhYVn2OE2ZYoKTLIQCeAqcMpD2lWXbrZ96xGmmUwgZAlUCf6GmLEGC+4vUtWaZYnxO1K4sOq/AxTuJ46oe8QVFVigZxzUdaKlEHoi8YBmg+eaEpyfTan3K+Nsl9RY4IFEQQqK3Ed8IzEnp0BAKNVRMxBVgDikz3JmpFZOaZAulUya+LM20KrQ6Q2txjlCgoCClwBA2jFeJVJbuJg+z1XgdPC2Ws/uaftRcsRxWgLJ2ZXecvuM7nVqus5gYRtURPpuqZR2q81u/McmUrbK8QTtoNq0lAkhryvJEtBUaM+sdkEw5tCiqySfdkXlsM39fToCu3/ModAfeaOi6Iy/1AewKP7b+sVng9q8NfeJ7G88Hd+QOun4ypMNO8rnBnC8nfy0DYcIxPb3G8QO7988p</JenovaConfiguration>
+		<JenovaConfiguration>eNqNkV9PwjAUxd/5FMteIePfgM033NDMoBBBXpwhXXeB6tYut60JIXx3u00NBoy+dOk9v3vv2emhYVn2OE2ZYoKTLIQCeAqcMpD2lWXbrZ96xGmmUwgZAlUCf6GmLEGC+4vUtWaZYnxO1K4sOq/AxTuJ46oe8QVFVigZxzUdaKlEHoi8YBmg+eaEpyfTan3K+Nsl9RY4IFEQQqK3Ed8IzEnp0BAKNVRMxBVgDikz3JmpFZOaZAulUya+LM20KrQ6Q2txjlCgoCClwBA2jFeJVJbuJg+z1XgdPC2Ws/uaftRcsRxWgLJ2ZXecvuM7fi3XWUwMo+oIn03Vsg7V+a3fmGTKVlneoB00m9YSAaQ1ZXki2gqNmfUOSKYcWhTV5JPuyDy2mb8vJ0DX73kUugNvNHTdkZf6AHaFH1v/2Cxw+9eGPvG9jeeDO3IHXT8Z0mEn+dxgzpeTv5aBMOGYnl7j+AHFfs8y</JenovaConfiguration>
 	</PropertyGroup>
 	<ItemDefinitionGroup>
 		<ClCompile>
@@ -50,7 +50,7 @@
 			<IntrinsicFunctions>true</IntrinsicFunctions>
 			<ExceptionHandling>Async</ExceptionHandling>
 			<RuntimeTypeInfo>true</RuntimeTypeInfo>
-			<AdditionalIncludeDirectories>./;./Jenova/JenovaSDK;./Jenova/Packages//GodotSDK-4.7.0;</AdditionalIncludeDirectories>
+			<AdditionalIncludeDirectories>./;./Jenova/JenovaSDK;./Jenova/Packages/GodotSDK-4.7.0;</AdditionalIncludeDirectories>
 			<ForcedIncludeFiles>JenovaSDK.h;</ForcedIncludeFiles>
 		</ClCompile>
 		<Link>
@@ -60,7 +60,7 @@
 			<GenerateDebugInformation>DebugFull</GenerateDebugInformation>
 			<GenerateMapFile>true</GenerateMapFile>
 			<MapFileName>$(OutDir)Jenova.Module.map</MapFileName>
-			<AdditionalLibraryDirectories>./;./Jenova/JenovaSDK;./Jenova/Packages//GodotSDK-4.7.0;</AdditionalLibraryDirectories>
+			<AdditionalLibraryDirectories>./;./Jenova/JenovaSDK;./Jenova/Packages/GodotSDK-4.7.0;</AdditionalLibraryDirectories>
 			<AdditionalDependencies>libGodot.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
 			<DelayLoadDLLs>Jenova.Runtime.Win64.dll;</DelayLoadDLLs>
 			<LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>

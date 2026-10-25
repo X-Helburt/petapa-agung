@@ -1,10 +1,10 @@
 // Jenova Preprocessor Definitions
-#define JENOVA_VERSION "0.3.9.0"
-#define JENOVA_COMPILER "Microsoft Visual C++ Compiler"
-#define MSVC_COMPILER
+#define JENOVA_VERSION "0.3.9.9"
+#define JENOVA_COMPILER "MinGW GCC Compiler"
+#define MINGW_CLANG_COMPILER
 #define JENOVA_CUSTOM
 
-#line 1
+#line 1 "C:/Users/SHOFIY SALSABILA/OneDrive/Desktop/godot/Petapa agung/scripe/org.cpp"
 
 /* Jenova C++ Node Base Script (Meteora) */
 
@@ -19,7 +19,7 @@ using namespace godot;
 using namespace jenova::sdk;
 
 // Self Instance
-CharacterBody2D* self = nullptr;
+static CharacterBody2D* self = nullptr;
 
 // Jenova Script Block Start
 namespace JNV_3a98f89e474519b6c60b {
