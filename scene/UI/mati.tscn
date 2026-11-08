@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b6b0h40bfjisx"]
+
+[ext_resource type="Script" uid="uid://rmkpxnxao7qm" path="res://scripe/UI/mati.gd" id="1_nocly"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=792050452]
+
+[node name="Control" type="Control" parent="." unique_id=1341385684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nocly")
+
+[node name="Respawn" type="Button" parent="Control" unique_id=2020539049]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 310.0
+offset_right = 616.0
+offset_bottom = 344.0
+text = "Respawn"
+
+[node name="Mainmenu" type="Button" parent="Control" unique_id=459003657]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.083000004
+anchor_bottom = 0.124000005
+offset_left = 495.0
+offset_top = 360.0
+offset_right = 520.301
+offset_bottom = 312.4
+text = "Main Menu
+"
+
+[node name="Label" type="Label" parent="Control" unique_id=1853397870]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 226.0
+offset_right = 667.0
+offset_bottom = 290.0
+text = "KAMU MATI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Respawn" to="Control" method="_on_respawn_pressed"]
+[connection signal="pressed" from="Control/Mainmenu" to="Control" method="_on_mainmenu_pressed"]

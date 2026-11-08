@@ -54,9 +54,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fr784"]
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_21ug7"]
 radius = 23.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health_bg"]
+bg_color = Color(0.12, 0.08, 0.08, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health_fill"]
+bg_color = Color(0.82, 0.12, 0.12, 1)
 
 [node name="Org" type="CharacterBody2D" unique_id=229640688 groups=["musuh"]]
 script = ExtResource("1_fr784")
@@ -74,8 +81,27 @@ frame_progress = 0.99019486
 shape = SubResource("CircleShape2D_fr784")
 debug_color = Color(0.57622415, 0.5529553, 0.08151355, 0.41960785)
 
-[node name="Attackbox" type="Area2D" parent="." unique_id=835757116]
+[node name="AttackBox" type="Area2D" parent="." unique_id=835757116]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attackbox" unique_id=373498124]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=373498124]
 shape = SubResource("CircleShape2D_21ug7")
 debug_color = Color(0.8756995, 0.32713947, 0.29144368, 0.41960785)
+
+[node name="darah" type="TextureProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -40.0
+offset_right = 22.0
+offset_bottom = -34.0
+show_percentage = false
+max_value = 27.0
+value = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_health_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health_fill")
+
+[node name="Label" type="Label" parent="." unique_id=577821632]
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 20.0
+offset_bottom = -25.0
+horizontal_alignment = 1
+vertical_alignment = 1

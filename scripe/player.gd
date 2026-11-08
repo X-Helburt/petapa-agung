@@ -4,6 +4,7 @@ extends CharacterBody2D
 # properti
 const KECEPATAN : float = 17891
 const MAX_DARAH : int = 10
+const MAX_MANA : float = 200.0
 
 var sudah_mati_player : bool = false
 var kebal_player : bool = false
@@ -17,8 +18,8 @@ var darah_tameng : int = 5
 var darah : int = MAX_DARAH
 var tameng : int = 2
 var regen : int = 1
-var mana : float = 20
-var regen_mana := 0.5
+var mana : float = MAX_MANA
+var regen_mana : float = 0.5 # regenerasi mana per detik
 
 var debuff_slow : float = 1.0
 var debuff_damage : int = 1
@@ -31,6 +32,7 @@ var posisi_awal : Vector2 = Vector2.ZERO
 
 # load scene
 var pause : PackedScene = load("res://scene/UI/pause_menu.tscn")
+var mati : PackedScene = load("res://scene/UI/mati.tscn")
 
 
 # penamaan node untuk mempermudah akses
@@ -55,17 +57,13 @@ func _ready():
 	states["mati"] =preload("res://scripe/states player/MatiState.gd").new()
 	states["state"] = preload("res://scripe/states player/State.gd").new()
 	states["bola_api"] = preload("res://scripe/states player/sihir.gd").new()
-	states["pause"] = preload("res://scripe/states player/ux player/PauseMenu.gd").new()
-	states["inventory"] = preload("res://scripe/states player/ux player/inventory.gd").new()
-
 	
 
 	if darah_player:
 		darah_player.max_value = MAX_DARAH
 		darah_player.value = darah
 
-	if mana_player:
-		mana_player.text = str(mana)
+	perbarui_tampilan_mana()
 
 	# Kasih referensi player ke setiap state
 	for s in states.values():
@@ -99,12 +97,40 @@ func ubah_state(new_state: String):
 		state.enter()
 
 func _input(event):
+	if event.is_action_pressed("pause") and not event.is_echo():
+		if not get_tree().paused and not sudah_mati_player:
+			buka_pause_menu()
+			get_viewport().set_input_as_handled()
+		return
+
+
 	if state:
 		state.handle_input(event)
+
+func buka_pause_menu() -> void:
+	var menu = pause.instantiate()
+	get_tree().current_scene.add_child(menu)
+	get_tree().paused = true
 
 func _process(delta):
 	if state:
 		state.update(delta)
+	if not sudah_mati_player and mana < MAX_MANA:
+		mana = minf(mana + regen_mana * delta, MAX_MANA)
+		perbarui_tampilan_mana()
+
+func gunakan_mana(jumlah: float) -> bool:
+	if jumlah <= 0.0:
+		return true
+	if mana < jumlah:
+		return false
+	mana -= jumlah
+	perbarui_tampilan_mana()
+	return true
+
+func perbarui_tampilan_mana() -> void:
+	if mana_player:
+		mana_player.text = "Mana: %.1f / %.1f" % [mana, MAX_MANA]
 
 func _physics_process(delta):
 	if state:
@@ -152,6 +178,10 @@ func kena_serang(area: Area2D) -> void:
 	
 		if darah <= 0:
 			ubah_state("mati")
+			if sudah_mati_player:
+				mati_menu()
+				get_viewport().set_input_as_handled()
+				return
 		else:
 			# Efek visual kedip merah saat terkena serangan
 			kebal_player = true
@@ -167,6 +197,12 @@ func kena_serang(area: Area2D) -> void:
 			await get_tree().create_timer(0.2).timeout
 			animated_sprite.modulate = Color.WHITE
 			kebal_player = false
+
+func mati_menu() -> void:
+	var menu_mati = mati.instantiate()
+	get_tree().current_scene.add_child(menu_mati)
+	get_tree().paused = true
+	
 
 # Handler regenerasi darah
 func _on_regen_timeout() -> void:
@@ -193,6 +229,8 @@ func respawn() -> void:
 	kebal_player = false
 	darah = MAX_DARAH
 	darah_tameng = 5
+	mana = MAX_MANA
+	perbarui_tampilan_mana()
 	
 	if darah_player:
 		darah_player.value = darah

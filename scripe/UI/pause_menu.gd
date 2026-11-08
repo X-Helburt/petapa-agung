@@ -1,20 +1,20 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") and not event.is_echo():
+		lanjutkan()
+		get_viewport().set_input_as_handled()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
+func lanjutkan() -> void:
+	get_tree().paused = false
+	get_parent().queue_free()
 
 func _on_kembali_pressed() -> void:
-	pass
-
+	lanjutkan()
 
 func _on_main_menu_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scene/UI/ui_loby.tscn")

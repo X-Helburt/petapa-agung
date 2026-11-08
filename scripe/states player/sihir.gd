@@ -1,53 +1,61 @@
 extends State
 
-# Preload scene fire_ball.tscn
-var fire_ball_scene : PackedScene = preload("res://scene/player/projektile/fire_ball.tscn")
+const FIRE_BALL_SCENE: PackedScene = preload("res://scene/player/projektile/fire_ball.tscn")
+const BIAYA_MANA: float = 5.5
+
+var cast_menunggu_animasi: bool = false
+var cooldown_tanpa_animasi: float = 0.0
 
 func enter() -> void:
-	# Spawn fire ball ke arah terakhir player, lalu langsung kembali ke idle
-	serang_fireball(player.arah_terakhir)
+	if not player.gunakan_mana(BIAYA_MANA):
+		player.ubah_state("idle")
+		return
+
+	var animasi: AnimatedSprite2D = player.get_animasi()
+	if animasi and animasi.sprite_frames and animasi.sprite_frames.has_animation("sihir"):
+		animasi.sprite_frames.set_animation_loop("sihir", false)
+		animasi.play("sihir")
+		cast_menunggu_animasi = true
+	else:
+		push_warning("Animasi 'sihir' belum ada pada AnimatedSprite2D player.")
+		serang_fireball(player.arah_terakhir)
+		cooldown_tanpa_animasi = 0.5
 
 func exit() -> void:
-	pass
+	cast_menunggu_animasi = false
+	cooldown_tanpa_animasi = 0.0
 
+func update(_delta: float) -> void:
+	if cooldown_tanpa_animasi > 0.0:
+		cooldown_tanpa_animasi -= _delta
+		if cooldown_tanpa_animasi <= 0.0 and player.state == self:
+			player.ubah_state("idle")
+		return
+	if not cast_menunggu_animasi:
+		return
+	if not is_instance_valid(player) or player.sudah_mati_player or player.state != self:
+		cast_menunggu_animasi = false
+		return
+
+	var animasi: AnimatedSprite2D = player.get_animasi()
+	if animasi.animation != "sihir" or animasi.is_playing():
+		return
+
+	cast_menunggu_animasi = false
+	serang_fireball(player.arah_terakhir)
+	player.ubah_state("idle")
 
 func serang_fireball(arah: Vector2) -> void:
-	var bola_api = fire_ball_scene.instantiate()
-
-	# 2) Beri tahu fire_ball arah terbangnya SEBELUM ditambahkan ke scene
-	#    (fire_ball.gd punya variabel "arah_terbang" yang akan dipakai di _physics_process)
 	if arah == Vector2.ZERO:
-		arah = Vector2.RIGHT  # default ke kanan kalau tidak ada arah
-	bola_api.arah_terbang = arah.normalized()
+		arah = Vector2.RIGHT
+	arah = arah.normalized()
+
+	var bola_api = FIRE_BALL_SCENE.instantiate()
+	bola_api.arah_terbang = arah
 	bola_api.penembak = player
 
-	# 3) Flip sprite fire ball sesuai arah horizontal
-	var sprite = bola_api.get_node("AnimatedSprite2D")
-	
-	if sprite:
-		if arah.x > 0 and arah.y > 0 : # kanan bawah
-			sprite.rotation_degrees = -45.0
-		elif arah.x < 0 and arah.y > 0:# kiri bawah
-			sprite.rotation_degrees = 45.0
-		elif arah.x > 0 and arah.y < 0: # kanan atas
-			sprite.rotation_degrees = -135
-		elif arah.x < 0 and arah.y < 0: # kiri bawah
-			sprite.rotation_degrees = 135
-		elif arah.y > 0: # atas
-			sprite.rotation_degrees = 360
-		elif arah.y < 0: # bawah
-			sprite.rotation_degrees = 180
-		elif arah.x < 0: #kiri
-			sprite.rotation_degrees = 90.0
-		elif arah.x > 0: #kanan
-			sprite.rotation_degrees = -90.0
+	var sprite: AnimatedSprite2D = bola_api.get_node("AnimatedSprite2D")
+	sprite.rotation_degrees = rad_to_deg(arah.angle()) + -90
 
-	# 4) Tambahkan ke scene utama (bukan child player, supaya fire ball
-	#    tidak ikut bergerak saat player bergerak)
 	player.get_tree().current_scene.add_child(bola_api)
-
-	# 5) Set posisi fire ball = posisi player saat ini
 	bola_api.global_position = player.global_position
-
-	# 6) Kembali ke state idle setelah menembak
-	player.ubah_state("idle")

@@ -88,13 +88,11 @@ script = ExtResource("2_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1597263151]
 position = Vector2(0.5717468, -0.17677355)
-rotation = -1.5707964
+rotation = -1.5760341
 scale = Vector2(0.03726105, 0.037598606)
 sprite_frames = SubResource("SpriteFrames_qxhxg")
-animation = &"meledak"
+animation = &"fire_ball"
 autoplay = "fire_ball"
-frame = 5
-frame_progress = 1.0
 offset = Vector2(-125.0397, -680.1381)
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=253685848]

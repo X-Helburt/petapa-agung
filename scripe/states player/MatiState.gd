@@ -23,7 +23,7 @@ func enter() -> void:
 		animasi.play("mati")
 		await animasi.animation_finished
 	player.hide()
-	await player.get_tree().create_timer(2.5).timeout
+	await player.get_tree().create_timer(1).timeout
 	player.respawn()
 
 func handle_input(_event: InputEvent) -> void:

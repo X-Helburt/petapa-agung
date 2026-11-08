@@ -10,6 +10,7 @@ var penembak : Node2D = null
 
 var _timer_hidup : float = 0.0
 var sudah_mengenai : bool = false
+var sedang_meledak: bool = false
 
 # Penamaan node untuk mempermudah akses
 @onready var anim := $AnimatedSprite2D
@@ -43,22 +44,27 @@ func _physics_process(delta: float) -> void:
 	# Hitung umur fire ball, hancurkan jika sudah melewati batas
 	_timer_hidup += delta
 	if _timer_hidup >= umur_maksimal:
-		fire_sprite.play("meledak")
-		kecepatan = 0
-		await fire_sprite.animation_finished
-
-		queue_free()
+		set_physics_process(false)
+		meledak()
 
 
 func nyerang(area: Area2D):
-	if sudah_mengenai or not area:
+	if sudah_mengenai or sedang_meledak or not is_instance_valid(area):
 		return
 
 	var target = area.get_parent()
-	if target == null or target == self or (penembak and target == penembak):
+	if not is_instance_valid(target) or target == self or (is_instance_valid(penembak) and target == penembak):
 		return
 
 	if target.is_in_group("projektile") or target.is_in_group("player"):
+		return
+	if not target.is_inside_tree() or not target.is_visible_in_tree():
+		return
+	if "sudah_mati" in target and bool(target.get("sudah_mati")):
+		return
+	if "sudah_mati_player" in target and bool(target.get("sudah_mati_player")):
+		return
+	if target.has_method("is_dead") and bool(target.call("is_dead")):
 		return
 
 	# Tandai sudah mengenai agar tidak memicu damage ganda
@@ -66,22 +72,29 @@ func nyerang(area: Area2D):
 	if attack_shape:
 		attack_shape.set_deferred("disabled", true)
 
-	var musuh = target if target else area
+	if target.has_method("kena_serang"):
+		target.kena_serang(attack_box)
+	elif "darah" in target:
+		target.darah -= damage
+		if target.has_method("kena_serang_fireball"):
+			target.kena_serang_fireball(damage)
 
-	# Jika musuh memiliki fungsi kena_serang 
-	if musuh and musuh.has_method("kena_serang"):
-		# Kirimkan attack_box fireball ini agar musuh memproses damage_player (5) dan animasi/darahnya
-		musuh.kena_serang(attack_box)
-	elif musuh and "darah" in musuh:
-		# Fallback jika musuh tidak punya method kena_serang standar
-		musuh.darah -= damage
-		if musuh.has_method("kena_serang_fireball"):
-			musuh.kena_serang_fireball(damage)
+	set_physics_process(false)
+	meledak()
 
+func meledak() -> void:
+	if sedang_meledak:
+		return
+	sedang_meledak = true
+	velocity = Vector2.ZERO
+	kecepatan = 0.0
+	if attack_box:
+		attack_box.set_deferred("monitoring", false)
+		attack_box.set_deferred("monitorable", false)
+	if attack_shape:
+		attack_shape.set_deferred("disabled", true)
 
-	fire_sprite.play("meledak")
-	kecepatan = 0
-	await fire_sprite.animation_finished
-	
-
+	if fire_sprite and fire_sprite.sprite_frames and fire_sprite.sprite_frames.has_animation("meledak"):
+		fire_sprite.play("meledak")
+		await fire_sprite.animation_finished
 	queue_free()
